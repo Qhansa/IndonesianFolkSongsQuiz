@@ -4,7 +4,7 @@ struct WelcomeView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color(red: 0.93, green: 0.79, blue: 0.40, opacity: 1.00)
+                Color("IFSQ Yellow Color")
                     .ignoresSafeArea()
                 VStack (alignment: .center, spacing: 20.0){
                     Spacer()
@@ -20,7 +20,7 @@ struct WelcomeView: View {
                         .multilineTextAlignment(.center)
                         .padding()
                     
-                    NavigationLink(destination: QuizView(), label: {
+                    NavigationLink(destination: QuizView(quizList: QuizModel.TenSongs[0]), label: {
                         Text("START THE QUIZ")
                             .padding()
                             .font(.title3)
@@ -32,7 +32,6 @@ struct WelcomeView: View {
                     Spacer()
                 }
             }
-//            .padding(.bottom)
         }
         .navigationViewStyle(.stack)
     }
