@@ -10,10 +10,13 @@ import SwiftUI
 struct QuizView: View {
     let quizList: QuizModel
     
-    // For Checking If the App Already Show All of the Questions
+    // For Checking
     @State var currentQuestion: Int = 0
-    
     @State private var chosenAnswerID: Int? = nil
+    
+    // Quiz Scores
+    @State var scoreRight = 0
+    @State var scoreWrong = 0
     
     var body: some View {
         
@@ -38,22 +41,16 @@ struct QuizView: View {
                         .fontWeight(.medium)
                         .padding()
                     
-                    ZStack {
-                        Text(QuizModel.TenSongs[currentQuestion].songTitle)
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .padding()
-                            .padding()
-                            .padding()
-                            .padding()
-                            .padding()
-                            .border(.gray, width: 2)
-                            .background(.white)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .padding(.horizontal)
-                    .padding(.horizontal)
-                    .padding(.horizontal)
+                    Text(QuizModel.TenSongs[currentQuestion].songTitle)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding()
+                        .padding()
+                        .padding()
+                        .padding()
+                        .padding()
+                        .border(.gray, width: 2)
+                        .background(.white)
                     
                     Text("is originally from")
                         .font(.title2)
@@ -68,7 +65,7 @@ struct QuizView: View {
                         Button(action: {
                             print("You chose \(QuizModel.TenSongs[currentQuestion].answerOptions[0])")
                             chosenAnswerID = 0
-                            self.afterAnswering(questionNumber: 0)
+                            self.afterAnswering(buttonID: 0)
                         }, label: {
                             Text(QuizModel.TenSongs[currentQuestion].answerOptions[0])
                                 .font(.title)
@@ -84,7 +81,7 @@ struct QuizView: View {
                         Button(action: {
                             print("You chose \(QuizModel.TenSongs[currentQuestion].answerOptions[1])")
                             chosenAnswerID = 1
-                            self.afterAnswering(questionNumber: 1)
+                            self.afterAnswering(buttonID: 1)
                         }, label: {
                             Text(QuizModel.TenSongs[currentQuestion].answerOptions[1])
                                 .font(.title)
@@ -100,7 +97,7 @@ struct QuizView: View {
                         Button(action: {
                             print("You chose \(QuizModel.TenSongs[currentQuestion].answerOptions[2])")
                             chosenAnswerID = 2
-                            self.afterAnswering(questionNumber: 2)
+                            self.afterAnswering(buttonID: 2)
                         }, label: {
                             Text(QuizModel.TenSongs[currentQuestion].answerOptions[2])
                                 .font(.title)
@@ -116,7 +113,7 @@ struct QuizView: View {
                         Button(action: {
                             print("You chose \(QuizModel.TenSongs[currentQuestion].answerOptions[3])")
                             chosenAnswerID = 3
-                            self.afterAnswering(questionNumber: 3)
+                            self.afterAnswering(buttonID: 3)
                         }, label: {
                             Text(QuizModel.TenSongs[currentQuestion].answerOptions[3])
                                 .font(.title)
@@ -143,11 +140,11 @@ struct QuizView: View {
                 }
             }
         } else {
-            EndView()
+            EndView(finalScoreRight: scoreRight, finalScoreWrong: scoreWrong)
         }
     }
     
-    // Creating a Function to Change the chosenAnswer Color
+    // Creating a Function to Change the chosenAnswer Color (NOT USED)
     func chosenButtonColor(buttonID: Int) -> Color {
         // If the user hasn't chosen the answer
         guard let chosenAnswerID = chosenAnswerID else {
@@ -162,11 +159,21 @@ struct QuizView: View {
         }
     }
     
-    // After Answering, Go to the Next Question
-    func afterAnswering(questionNumber: Int) {
-        self.currentQuestion = self.currentQuestion + 1
-        print("currentQuestion : \(currentQuestion)")
-//        QuizModel.TenSongs[currentIndex] += 1
+    // After Answering, Calculate the Score and Go to the Next Question
+    func afterAnswering(buttonID: Int) {
+        print("currentQuestion : \(currentQuestion + 1)")
+        
+        // CALCULATE THE SCORE
+        if QuizModel.TenSongs[currentQuestion].correctAnswerID == buttonID {
+            scoreRight += 1
+        } else {
+            scoreWrong += 1
+        }
+        print("Right : \(scoreRight)")
+        print("Wrong : \(scoreWrong)")
+        
+        // GO TO THE NEXT QUESTIONS
+        currentQuestion += 1
     }
     
 }
