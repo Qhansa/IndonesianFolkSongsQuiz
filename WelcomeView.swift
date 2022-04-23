@@ -20,14 +20,17 @@ struct WelcomeView: View {
                         .multilineTextAlignment(.center)
                         .padding()
                     
-                    NavigationLink(destination: QuizView(quizList: QuizModel.TenSongs[0]), label: {
+                    NavigationLink(destination: QuizView().navigationBarBackButtonHidden(true), label: {
                         Text("START THE QUIZ")
                             .padding()
                             .font(.title3)
                             .border(.red, width: 2)
                             .foregroundColor(.white)
                             .background(.red)
+                            .cornerRadius(30)
+                            .shadow(radius: 5)
                     })
+                    
                     Spacer()
                     Spacer()
                 }

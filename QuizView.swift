@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct QuizView: View {
-    let quizList: QuizModel
+//    let quizList: QuizModel
     
     // For Checking
     @State var currentQuestion: Int = 0
@@ -41,6 +41,7 @@ struct QuizView: View {
                         .fontWeight(.medium)
                         .padding()
                     
+                    // THE SONG TITLE (QUESTION)
                     Text(QuizModel.TenSongs[currentQuestion].songTitle)
                         .font(.largeTitle)
                         .fontWeight(.bold)
@@ -49,8 +50,8 @@ struct QuizView: View {
                         .padding()
                         .padding()
                         .padding()
-                        .border(.gray, width: 2)
                         .background(.white)
+                        .cornerRadius(100)
                     
                     Text("is originally from")
                         .font(.title2)
@@ -63,7 +64,7 @@ struct QuizView: View {
                     // THE ANSWER OPTIONS
                     VStack {
                         Button(action: {
-                            print("You chose \(QuizModel.TenSongs[currentQuestion].answerOptions[0])")
+                            print("Your Answer :  \(QuizModel.TenSongs[currentQuestion].answerOptions[0])")
                             chosenAnswerID = 0
                             self.afterAnswering(buttonID: 0)
                         }, label: {
@@ -75,11 +76,9 @@ struct QuizView: View {
                         })
                         .padding()
                         .border(Color("IFSQ Yellow Color"), width: 4)
-//                        .background(chosenButtonColor(buttonID: 0))
-//                        .disabled(chosenAnswerID != nil)
                         
                         Button(action: {
-                            print("You chose \(QuizModel.TenSongs[currentQuestion].answerOptions[1])")
+                            print("Your Answer :  \(QuizModel.TenSongs[currentQuestion].answerOptions[1])")
                             chosenAnswerID = 1
                             self.afterAnswering(buttonID: 1)
                         }, label: {
@@ -91,11 +90,9 @@ struct QuizView: View {
                         })
                         .padding()
                         .border(Color("IFSQ Yellow Color"), width: 4)
-//                        .background(chosenButtonColor(buttonID: 1))
-//                        .disabled(chosenAnswerID != nil)
                         
                         Button(action: {
-                            print("You chose \(QuizModel.TenSongs[currentQuestion].answerOptions[2])")
+                            print("Your Answer :  \(QuizModel.TenSongs[currentQuestion].answerOptions[2])")
                             chosenAnswerID = 2
                             self.afterAnswering(buttonID: 2)
                         }, label: {
@@ -107,11 +104,9 @@ struct QuizView: View {
                         })
                         .padding()
                         .border(Color("IFSQ Yellow Color"), width: 4)
-//                        .background(chosenButtonColor(buttonID: 2))
-//                        .disabled(chosenAnswerID != nil)
                         
                         Button(action: {
-                            print("You chose \(QuizModel.TenSongs[currentQuestion].answerOptions[3])")
+                            print("Your Answer :  \(QuizModel.TenSongs[currentQuestion].answerOptions[3])")
                             chosenAnswerID = 3
                             self.afterAnswering(buttonID: 3)
                         }, label: {
@@ -123,8 +118,6 @@ struct QuizView: View {
                         })
                         .padding()
                         .border(Color("IFSQ Yellow Color"), width: 4)
-//                        .background(chosenButtonColor(buttonID: 3))
-//                        .disabled(chosenAnswerID != nil)
                     }
                     .padding(.horizontal)
                     .padding(.horizontal)
@@ -135,7 +128,6 @@ struct QuizView: View {
                     .padding(.horizontal)
                     .padding(.horizontal)
                     
-                    
                     Spacer()
                 }
             }
@@ -144,24 +136,9 @@ struct QuizView: View {
         }
     }
     
-    // Creating a Function to Change the chosenAnswer Color (NOT USED)
-    func chosenButtonColor(buttonID: Int) -> Color {
-        // If the user hasn't chosen the answer
-        guard let chosenAnswerID = chosenAnswerID else {
-            return .clear
-        }
-        
-        // If the user has chosen the answer
-        if chosenAnswerID == quizList.correctAnswerID {
-            return .green
-        } else {
-            return .red
-        }
-    }
-    
     // After Answering, Calculate the Score and Go to the Next Question
     func afterAnswering(buttonID: Int) {
-        print("currentQuestion : \(currentQuestion + 1)")
+        print("Question Number : \(currentQuestion + 1)")
         
         // CALCULATE THE SCORE
         if QuizModel.TenSongs[currentQuestion].correctAnswerID == buttonID {
@@ -180,6 +157,6 @@ struct QuizView: View {
 
 struct QuizView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizView(quizList: QuizModel.TenSongs[0])
+        QuizView()
     }
 }
