@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+struct QuizModel {
+    var songTitle: String
+    var correctAnswer: String
+    var answerOptions: [ProvinceOptions]
+}
+
+struct ProvinceOptions {
+    var id: Int
+    
+}

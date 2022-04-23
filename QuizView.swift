@@ -15,8 +15,8 @@ struct QuizView: View {
     
 }
 
-struct QuizView_Previews: PreviewProvider {
-    static var previews: some View {
-        QuizView()
-    }
-}
+//struct QuizView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        QuizView()
+//    }
+//}
