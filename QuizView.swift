@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct QuizView: View {
 //    let quizList: QuizModel
@@ -17,6 +18,9 @@ struct QuizView: View {
     // Quiz Scores
     @State var scoreRight = 0
     @State var scoreWrong = 0
+    
+    // For Playing the Audio
+    @State var AudioPlayer = AudioPlayerModel(musicAudio: "")
     
     var body: some View {
         
@@ -53,13 +57,22 @@ struct QuizView: View {
                         .background(.white)
                         .cornerRadius(100)
                     
+                    Button(action: {
+                        AudioPlayer.playAudio(musicAudio: QuizModel.TenSongs[currentQuestion].songTitle)
+                        print("The \(QuizModel.TenSongs[currentQuestion].songTitle) Song is Now Playing")
+                    }, label: {
+                        Image(systemName: "speaker.wave.2")
+                            .foregroundColor(.red)
+                            .scaledToFit()
+                            .multilineTextAlignment(.center)
+                    })
+ 
                     Text("is originally from")
                         .font(.title2)
                         .foregroundColor(Color("IFSQ Black Color"))
                         .fontWeight(.medium)
                         .padding()
-                        .padding()
-                    
+                        .padding(.bottom)
                     
                     // THE ANSWER OPTIONS
                     VStack {
@@ -67,6 +80,7 @@ struct QuizView: View {
                             print("Your Answer :  \(QuizModel.TenSongs[currentQuestion].answerOptions[0])")
                             chosenAnswerID = 0
                             self.afterAnswering(buttonID: 0)
+                            AudioPlayer.player?.stop()
                         }, label: {
                             Text(QuizModel.TenSongs[currentQuestion].answerOptions[0])
                                 .font(.title)
@@ -81,6 +95,7 @@ struct QuizView: View {
                             print("Your Answer :  \(QuizModel.TenSongs[currentQuestion].answerOptions[1])")
                             chosenAnswerID = 1
                             self.afterAnswering(buttonID: 1)
+                            AudioPlayer.player?.stop()
                         }, label: {
                             Text(QuizModel.TenSongs[currentQuestion].answerOptions[1])
                                 .font(.title)
@@ -95,6 +110,7 @@ struct QuizView: View {
                             print("Your Answer :  \(QuizModel.TenSongs[currentQuestion].answerOptions[2])")
                             chosenAnswerID = 2
                             self.afterAnswering(buttonID: 2)
+                            AudioPlayer.player?.stop()
                         }, label: {
                             Text(QuizModel.TenSongs[currentQuestion].answerOptions[2])
                                 .font(.title)
@@ -109,6 +125,7 @@ struct QuizView: View {
                             print("Your Answer :  \(QuizModel.TenSongs[currentQuestion].answerOptions[3])")
                             chosenAnswerID = 3
                             self.afterAnswering(buttonID: 3)
+                            AudioPlayer.player?.stop()
                         }, label: {
                             Text(QuizModel.TenSongs[currentQuestion].answerOptions[3])
                                 .font(.title)
@@ -128,6 +145,7 @@ struct QuizView: View {
                     .padding(.horizontal)
                     .padding(.horizontal)
                     
+                    Spacer()
                     Spacer()
                 }
             }
