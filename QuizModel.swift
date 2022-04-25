@@ -55,11 +55,6 @@ struct QuizModel {
             correctAnswerID: 3),
         
         QuizModel(
-            songTitle: "Sajojo",
-            answerOptions: ["Papua", "West Papua", "West Nusa Tenggara", "East Nusa Tenggara"],
-            correctAnswerID: 1),
-        
-        QuizModel(
             songTitle: "Gundul Pacul",
             answerOptions: ["Aceh", "Jakarta", "Central Java", "South Sumatra"],
             correctAnswerID: 2),
