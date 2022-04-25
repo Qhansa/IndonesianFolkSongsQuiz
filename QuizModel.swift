@@ -24,10 +24,10 @@ struct QuizModel {
             answerOptions: ["East Nusa Tenggara", "West Sulawesi", "Bali", "North Sumatra"],
             correctAnswerID: 0),
         
-        QuizModel(
-            songTitle: "Apuse",
-            answerOptions: ["Jambi", "Riau", "Banten", "Papua"],
-            correctAnswerID: 3),
+//        QuizModel(
+//            songTitle: "Apuse",
+//            answerOptions: ["Jambi", "Riau", "Banten", "Papua"],
+//            correctAnswerID: 3),
         
         QuizModel(
             songTitle: "Ayam Den Lapeh",
@@ -54,10 +54,10 @@ struct QuizModel {
             answerOptions: ["South Sulawesi", "Gorontalo", "North Maluku", "Riau"],
             correctAnswerID: 3),
         
-        QuizModel(
-            songTitle: "Gundul Pacul",
-            answerOptions: ["Aceh", "Jakarta", "Central Java", "South Sumatra"],
-            correctAnswerID: 2),
+//        QuizModel(
+//            songTitle: "Gundul Pacul",
+//            answerOptions: ["Aceh", "Jakarta", "Central Java", "South Sumatra"],
+//            correctAnswerID: 2),
         
     ]
 }
