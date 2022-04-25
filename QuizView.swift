@@ -25,7 +25,7 @@ struct QuizView: View {
     var body: some View {
         
         // START THE QUIZ
-        if self.currentQuestion < QuizModel.TenSongs.count {
+        if self.currentQuestion < QuizModel.FiveSongs.count {
             ZStack {
                 Color("IFSQ Yellow Color")
                     .ignoresSafeArea()
@@ -46,7 +46,7 @@ struct QuizView: View {
                         .padding()
                     
                     // THE SONG TITLE (QUESTION)
-                    Text(QuizModel.TenSongs[currentQuestion].songTitle)
+                    Text(QuizModel.FiveSongs[currentQuestion].songTitle)
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .padding()
@@ -58,8 +58,8 @@ struct QuizView: View {
                         .cornerRadius(100)
                     
                     Button(action: {
-                        AudioPlayer.playAudio(musicAudio: QuizModel.TenSongs[currentQuestion].songTitle)
-                        print("The \(QuizModel.TenSongs[currentQuestion].songTitle) Song is Now Playing")
+                        AudioPlayer.playAudio(musicAudio: QuizModel.FiveSongs[currentQuestion].songTitle)
+                        print("The \(QuizModel.FiveSongs[currentQuestion].songTitle) Song is Now Playing")
                     }, label: {
                         Image(systemName: "speaker.wave.2")
                             .foregroundColor(.red)
@@ -77,12 +77,12 @@ struct QuizView: View {
                     // THE ANSWER OPTIONS
                     VStack {
                         Button(action: {
-                            print("Your Answer :  \(QuizModel.TenSongs[currentQuestion].answerOptions[0])")
+                            print("Your Answer :  \(QuizModel.FiveSongs[currentQuestion].answerOptions[0])")
                             chosenAnswerID = 0
                             self.afterAnswering(buttonID: 0)
                             AudioPlayer.player?.stop()
                         }, label: {
-                            Text(QuizModel.TenSongs[currentQuestion].answerOptions[0])
+                            Text(QuizModel.FiveSongs[currentQuestion].answerOptions[0])
                                 .font(.title)
                                 .fontWeight(.medium)
                                 .foregroundColor(Color("IFSQ Black Color"))
@@ -92,12 +92,12 @@ struct QuizView: View {
                         .border(Color("IFSQ Yellow Color"), width: 4)
                         
                         Button(action: {
-                            print("Your Answer :  \(QuizModel.TenSongs[currentQuestion].answerOptions[1])")
+                            print("Your Answer :  \(QuizModel.FiveSongs[currentQuestion].answerOptions[1])")
                             chosenAnswerID = 1
                             self.afterAnswering(buttonID: 1)
                             AudioPlayer.player?.stop()
                         }, label: {
-                            Text(QuizModel.TenSongs[currentQuestion].answerOptions[1])
+                            Text(QuizModel.FiveSongs[currentQuestion].answerOptions[1])
                                 .font(.title)
                                 .fontWeight(.medium)
                                 .foregroundColor(Color("IFSQ Black Color"))
@@ -107,12 +107,12 @@ struct QuizView: View {
                         .border(Color("IFSQ Yellow Color"), width: 4)
                         
                         Button(action: {
-                            print("Your Answer :  \(QuizModel.TenSongs[currentQuestion].answerOptions[2])")
+                            print("Your Answer :  \(QuizModel.FiveSongs[currentQuestion].answerOptions[2])")
                             chosenAnswerID = 2
                             self.afterAnswering(buttonID: 2)
                             AudioPlayer.player?.stop()
                         }, label: {
-                            Text(QuizModel.TenSongs[currentQuestion].answerOptions[2])
+                            Text(QuizModel.FiveSongs[currentQuestion].answerOptions[2])
                                 .font(.title)
                                 .fontWeight(.medium)
                                 .foregroundColor(Color("IFSQ Black Color"))
@@ -122,12 +122,12 @@ struct QuizView: View {
                         .border(Color("IFSQ Yellow Color"), width: 4)
                         
                         Button(action: {
-                            print("Your Answer :  \(QuizModel.TenSongs[currentQuestion].answerOptions[3])")
+                            print("Your Answer :  \(QuizModel.FiveSongs[currentQuestion].answerOptions[3])")
                             chosenAnswerID = 3
                             self.afterAnswering(buttonID: 3)
                             AudioPlayer.player?.stop()
                         }, label: {
-                            Text(QuizModel.TenSongs[currentQuestion].answerOptions[3])
+                            Text(QuizModel.FiveSongs[currentQuestion].answerOptions[3])
                                 .font(.title)
                                 .fontWeight(.medium)
                                 .foregroundColor(Color("IFSQ Black Color"))
@@ -159,7 +159,7 @@ struct QuizView: View {
         print("Question Number : \(currentQuestion + 1)")
         
         // CALCULATE THE SCORE
-        if QuizModel.TenSongs[currentQuestion].correctAnswerID == buttonID {
+        if QuizModel.FiveSongs[currentQuestion].correctAnswerID == buttonID {
             scoreRight += 1
         } else {
             scoreWrong += 1

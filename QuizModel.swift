@@ -13,7 +13,7 @@ struct QuizModel {
     let correctAnswerID: Int
     
     // The Quiz Contents
-    static let TenSongs : [QuizModel] = [
+    static let FiveSongs : [QuizModel] = [
         QuizModel(
             songTitle: "Ampar-Ampar Pisang",
             answerOptions: ["North Sumatra", "South Kalimantan", "East Java", "Maluku"],
@@ -22,21 +22,6 @@ struct QuizModel {
         QuizModel(
             songTitle: "Anak Kambing Saya",
             answerOptions: ["East Nusa Tenggara", "West Sulawesi", "Bali", "North Sumatra"],
-            correctAnswerID: 0),
-        
-//        QuizModel(
-//            songTitle: "Apuse",
-//            answerOptions: ["Jambi", "Riau", "Banten", "Papua"],
-//            correctAnswerID: 3),
-        
-        QuizModel(
-            songTitle: "Ayam Den Lapeh",
-            answerOptions: ["Jakarta", "East Kalimantan", "West Sumatra", "Lampung"],
-            correctAnswerID: 2),
-        
-        QuizModel(
-            songTitle: "Buka Pintu",
-            answerOptions: ["Maluku", "Papua", "Aceh", "Jambi"],
             correctAnswerID: 0),
         
         QuizModel(
@@ -53,11 +38,6 @@ struct QuizModel {
             songTitle: "Soleram",
             answerOptions: ["South Sulawesi", "Gorontalo", "North Maluku", "Riau"],
             correctAnswerID: 3),
-        
-//        QuizModel(
-//            songTitle: "Gundul Pacul",
-//            answerOptions: ["Aceh", "Jakarta", "Central Java", "South Sumatra"],
-//            correctAnswerID: 2),
         
     ]
 }
