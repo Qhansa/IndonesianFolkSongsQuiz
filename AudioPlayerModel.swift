@@ -41,7 +41,7 @@ struct AudioPlayerModel {
                     return
                 }
                 player.play()
-                player.setVolume(5.0, fadeDuration: 0.5)
+                player.setVolume(3.0, fadeDuration: 0.5)
 
             } catch {
                 print("Something went wrong")
