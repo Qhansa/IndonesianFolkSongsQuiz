@@ -24,7 +24,7 @@ struct AudioPlayerModel {
 
         } else {
             // Set up the Audio
-            let urlString = Bundle.main.path(forResource: "\(musicAudio)", ofType: "m4a")
+            let urlString = Bundle.main.path(forResource: "\(musicAudio)", ofType: "mp3")
 
             // Play the audio
             do {
