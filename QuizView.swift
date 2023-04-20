@@ -9,8 +9,6 @@ import SwiftUI
 import AVFoundation
 
 struct QuizView: View {
-//    let quizList: QuizModel
-    
     // For Checking
     @State var currentQuestion: Int = 0
     @State private var chosenAnswerID: Int? = nil
@@ -41,7 +39,6 @@ struct QuizView: View {
                     
                     Text("Guess this Indonesian Folk Song's Origin")
                         .font(.title)
-                        .foregroundColor(Color("IFSQ Red Color"))
                         .fontWeight(.medium)
                         .padding()
                     
@@ -49,35 +46,36 @@ struct QuizView: View {
                     Text(QuizModel.FiveSongs[currentQuestion].songTitle)
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                        .padding()
-                        .padding()
-                        .padding()
-                        .padding()
-                        .padding()
+                        .padding(.horizontal, 80)
+                        .padding(.vertical, 50)
+                        .foregroundColor(.black)
                         .background(.white)
                         .cornerRadius(100)
                     
                     Button(action: {
                         AudioPlayer.playAudio(musicAudio: QuizModel.FiveSongs[currentQuestion].songTitle)
-                        print("The \(QuizModel.FiveSongs[currentQuestion].songTitle) Song is Now Playing")
                     }, label: {
                         Image(systemName: "speaker.wave.2")
                             .foregroundColor(.red)
                             .scaledToFit()
                             .multilineTextAlignment(.center)
+                            .font(.body.bold())
+                            .imageScale(.medium)
+                            .foregroundColor(.white)
+                            .padding(10)
+                            .background(.white)
+                            .clipShape(Circle())
+                            .shadow(radius: 10.0)
                     })
- 
+                    
                     Text("is originally from")
                         .font(.title2)
-                        .foregroundColor(Color("IFSQ Black Color"))
                         .fontWeight(.medium)
-                        .padding()
-                        .padding(.bottom)
+                        .padding(.bottom, 5)
                     
                     // THE ANSWER OPTIONS
                     VStack {
                         Button(action: {
-                            print("Your Answer :  \(QuizModel.FiveSongs[currentQuestion].answerOptions[0])")
                             chosenAnswerID = 0
                             self.afterAnswering(buttonID: 0)
                             AudioPlayer.player?.stop()
@@ -89,10 +87,11 @@ struct QuizView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         })
                         .padding()
-                        .border(Color("IFSQ Yellow Color"), width: 4)
+                        .border(Color("IFSQ Yellow Color").opacity(0.5), width: 4)
+                        .background(Color("IFSQ Yellow Color").opacity(0.75))
+                        .cornerRadius(10)
                         
                         Button(action: {
-                            print("Your Answer :  \(QuizModel.FiveSongs[currentQuestion].answerOptions[1])")
                             chosenAnswerID = 1
                             self.afterAnswering(buttonID: 1)
                             AudioPlayer.player?.stop()
@@ -104,10 +103,11 @@ struct QuizView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         })
                         .padding()
-                        .border(Color("IFSQ Yellow Color"), width: 4)
+                        .border(Color("IFSQ Yellow Color").opacity(0.5), width: 4)
+                        .background(Color("IFSQ Yellow Color").opacity(0.75))
+                        .cornerRadius(10)
                         
                         Button(action: {
-                            print("Your Answer :  \(QuizModel.FiveSongs[currentQuestion].answerOptions[2])")
                             chosenAnswerID = 2
                             self.afterAnswering(buttonID: 2)
                             AudioPlayer.player?.stop()
@@ -119,10 +119,11 @@ struct QuizView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         })
                         .padding()
-                        .border(Color("IFSQ Yellow Color"), width: 4)
+                        .border(Color("IFSQ Yellow Color").opacity(0.5), width: 4)
+                        .background(Color("IFSQ Yellow Color").opacity(0.75))
+                        .cornerRadius(10)
                         
                         Button(action: {
-                            print("Your Answer :  \(QuizModel.FiveSongs[currentQuestion].answerOptions[3])")
                             chosenAnswerID = 3
                             self.afterAnswering(buttonID: 3)
                             AudioPlayer.player?.stop()
@@ -134,16 +135,11 @@ struct QuizView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         })
                         .padding()
-                        .border(Color("IFSQ Yellow Color"), width: 4)
+                        .border(Color("IFSQ Yellow Color").opacity(0.5), width: 4)
+                        .background(Color("IFSQ Yellow Color").opacity(0.75))
+                        .cornerRadius(10)
                     }
-                    .padding(.horizontal)
-                    .padding(.horizontal)
-                    .padding(.horizontal)
-                    .padding(.horizontal)
-                    .padding(.horizontal)
-                    .padding(.horizontal)
-                    .padding(.horizontal)
-                    .padding(.horizontal)
+                    .padding(.horizontal, 100)
                     
                     Spacer()
                     Spacer()
@@ -156,16 +152,12 @@ struct QuizView: View {
     
     // After Answering, Calculate the Score and Go to the Next Question
     func afterAnswering(buttonID: Int) {
-        print("Question Number : \(currentQuestion + 1)")
-        
         // CALCULATE THE SCORE
         if QuizModel.FiveSongs[currentQuestion].correctAnswerID == buttonID {
             scoreRight += 1
         } else {
             scoreWrong += 1
         }
-        print("Right : \(scoreRight)")
-        print("Wrong : \(scoreWrong)")
         
         // GO TO THE NEXT QUESTIONS
         currentQuestion += 1
@@ -175,6 +167,6 @@ struct QuizView: View {
 
 struct QuizView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizView()
+        QuizView().preferredColorScheme(.light)
     }
 }

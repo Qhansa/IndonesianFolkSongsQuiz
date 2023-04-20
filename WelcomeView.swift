@@ -15,6 +15,7 @@ struct WelcomeView: View {
                         .multilineTextAlignment(.center)
                     
                     Text("Welcome to the Indonesian Folk Songs Quiz App!")
+                        .foregroundColor(.black)
                         .font(.title)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
@@ -42,6 +43,6 @@ struct WelcomeView: View {
 
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView()
+        WelcomeView().preferredColorScheme(.light)
     }
 }
